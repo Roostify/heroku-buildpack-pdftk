@@ -1,0 +1,19 @@
+#!/bin/bash -xe
+
+### Create the required dir structure
+mkdir -vp $1/vendor/pdftk/lib $1/vendor/pdftk/bin
+
+### Move the pdftk bin & lib files
+mv pdftk-bin/bin/pdftk  $1/vendor/pdftk/bin/pdftk
+mv pdftk-bin/lib/libgcj.so.16 $1/vendor/pdftk/lib/libgcj.so.16      ### Required for Ubuntu 16.04 & above
+mv pdftk-bin/lib/libstdc++.so.6 $1/vendor/pdftk/lib/libstdc++.so.6  ### Required for cedar-14
+
+### add permission to pdftk binary
+chmod -R 777 $1/vendor/pdftk/bin/pdftk
+chmod -R 777 $1/vendor/pdftk/lib/libgcj.so.16
+chmod -R 777 $1/vendor/pdftk/lib/libstdc++.so.6
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/vendor/pdftk/lib
+export PATH=$PATH:$HOME/vendor/pdftk/bin
+
+echo "pdftk installation completed.."
