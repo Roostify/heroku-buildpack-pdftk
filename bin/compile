@@ -17,3 +17,8 @@ chmod -R 777 $1/vendor/pdftk/lib/libstdc++.so.6
 #export PATH=$PATH:$HOME/vendor/pdftk/bin
 
 echo "pdftk installation completed.."
+
+#install img2pdf
+pip3 install img2pdf
+
+echo "img2pdf installation completed.."
